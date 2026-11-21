@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Fraunces"; font-style: normal; font-weight: 100 900; src: url("../assets/fonts/fraunces.woff2") format("woff2"); }
+  @font-face { font-family: "Fraunces"; font-style: italic; font-weight: 100 900; src: url("../assets/fonts/fraunces-italic.woff2") format("woff2"); }
+  @font-face { font-family: "Manrope"; font-style: normal; font-weight: 200 800; src: url("../assets/fonts/manrope.woff2") format("woff2"); }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { background: #fbf7ef; color: #0a2a43; font-family: "Manrope", sans-serif; }
+  .frame { position: absolute; inset: 18px; display: grid; grid-template-columns: 1fr 470px; border: 1.5px solid #0a2a43; overflow: hidden; }
+  .left { position: relative; z-index: 2; display: flex; flex-direction: column; padding: 46px 48px 38px 50px; }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .brand img { width: 94px; height: auto; }
+  .brand__name { font-family: "Fraunces", serif; font-size: 39px; font-weight: 600; letter-spacing: -0.035em; line-height: 1; }
+  .brand__sub { margin-top: 5px; font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: #52677a; }
+  .eyebrow { margin-top: 34px; font-size: 10px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+  .eyebrow span { display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: #e2604a; vertical-align: 1px; }
+  h1 { margin: 14px 0 0; font-family: "Fraunces", serif; font-size: 64px; font-weight: 500; line-height: 0.96; letter-spacing: -0.04em; }
+  h1 em { position: relative; z-index: 0; font-style: italic; color: #0f66b8; }
+  h1 em::after { content: ""; position: absolute; z-index: -1; left: -2%; right: -2%; bottom: 0.05em; height: 0.14em; border-radius: 50%; background: #f4d488; transform: rotate(-1deg); }
+  .lede { margin: 20px 0 0; max-width: 34ch; font-size: 14px; line-height: 1.55; color: #4f6475; }
+  .foot { display: flex; align-items: center; gap: 18px; margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(10, 42, 67, 0.18); font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+  .foot .dot { width: 4px; height: 4px; border-radius: 50%; background: #38a2f5; }
+  .media { position: relative; overflow: hidden; background: #38a2f5; }
+  .media img { width: 100%; height: 100%; object-fit: cover; }
+  .media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 42, 67, 0) 55%, rgba(10, 42, 67, 0.55) 100%); }
+  .place { position: absolute; z-index: 2; left: 24px; bottom: 24px; padding: 9px 14px; background: #fbf7ef; color: #0a2a43; font-size: 9px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
+  .sticker { position: absolute; z-index: 3; top: 24px; right: 24px; display: grid; place-items: center; width: 96px; height: 96px; border-radius: 50%; background: #f4d488; color: #0a2a43; text-align: center; font-size: 8px; font-weight: 800; letter-spacing: 0.12em; line-height: 1.5; text-transform: uppercase; transform: rotate(7deg); }
+  .sticker b { display: block; font-family: "Fraunces", serif; font-size: 22px; font-weight: 500; letter-spacing: -0.03em; }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="left">
+      <div class="brand">
+        <img src="../assets/brand/logo-mark-ink.png" alt="">
+        <div>
+          <div class="brand__name">Kimberrys</div>
+          <div class="brand__sub">Cafe &amp; Bakery</div>
+        </div>
+      </div>
+      <p class="eyebrow"><span></span>Cafe &amp; bakery · Osu, Accra</p>
+      <h1>Good days start<br>with something<br><em>warm.</em></h1>
+      <p class="lede">Cakes, pastries, brunch and comfort food — baked fresh on Okodan Road.</p>
+      <div class="foot">
+        <span>Order on WhatsApp</span><span class="dot"></span><span>Kimberrys.com/menu</span>
+      </div>
+    </div>
+    <div class="media">
+      <img src="../assets/img/storefront.webp" alt="">
+      <div class="sticker"><div><b>4.5</b>Google rating</div></div>
+      <p class="place">Okodan Road · Osu</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+# Kimberrys — Apache / LiteSpeed config for Hostinger
+Options -MultiViews
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Canonical menu URL: /menu serves menu.html
+  RewriteCond %{THE_REQUEST} \s/+menu\.html[\s?] [NC]
+  RewriteRule ^menu\.html$ /menu [R=301,L,NE]
+  RewriteCond %{THE_REQUEST} \s/+menu/[\s?] [NC]
+  RewriteRule ^menu/$ /menu [R=301,L,NE]
+  RewriteRule ^menu/?$ menu.html [L]
+
+  # Canonical home URL
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ / [R=301,L,NE]
+</IfModule>
+
+# Keep source files and git metadata private if they are ever uploaded
+RedirectMatch 404 ^/_source/
+RedirectMatch 404 ^/\.git/
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

@@ -1,0 +1,16 @@
+# Research, source and QA files that are not part of the live website.
+menu-raw.pdf
+ig-api.json
+ig-profile.html
+maps.html
+page-*.png
+raw-*.jpeg
+source-photos/
+brand/
+qa/
+qa.js
+
+# Local tooling
+.DS_Store
+Thumbs.db
+*.log

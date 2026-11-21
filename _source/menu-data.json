@@ -1,0 +1,306 @@
+{
+  "currency": "GH₵",
+  "sections": [
+    {
+      "id": "breakfast",
+      "name": "Breakfast",
+      "note": "A proper start — served through the morning.",
+      "items": [
+        {
+          "id": "full-english-breakfast",
+          "name": "Full English Breakfast",
+          "price": 250,
+          "desc": "2 eggs, bacon, 2 sausages, baked beans, toasted bread and mushrooms, served with tea, coffee or juice.",
+          "tag": "The full works"
+        },
+        {
+          "id": "ghanaian-breakfast",
+          "name": "Ghanaian Breakfast",
+          "price": 160,
+          "desc": "Traditional omelette, sausages and bread, served with milo tea or coffee."
+        },
+        {
+          "id": "melting-potatoes-brunch",
+          "name": "Melting Potatoes Brunch",
+          "price": 120,
+          "desc": "Crispy golden potatoes served with bacon, sausage and your choice of egg."
+        },
+        {
+          "id": "pancake-delight",
+          "name": "Pancake Delight",
+          "price": 180,
+          "desc": "A 7-inch pancake served with your choice of syrup, fruits or ice cream."
+        }
+      ]
+    },
+    {
+      "id": "pastries",
+      "name": "Grab & Go Pastries",
+      "note": "Flaky, buttery and best eaten warm.",
+      "items": [
+        {
+          "id": "spring-rolls",
+          "name": "Spring Rolls (4pcs)",
+          "price": 57,
+          "desc": "Golden crispy rolls filled with savoury vegetables."
+        },
+        {
+          "id": "samosa",
+          "name": "Samosa (4pcs)",
+          "price": 58,
+          "desc": "Crisp pastry pockets filled with a flavourful spiced filling."
+        },
+        {
+          "id": "beef-pie",
+          "name": "Beef Pie",
+          "price": 45,
+          "desc": "Flaky pastry filled with seasoned beef."
+        },
+        {
+          "id": "fish-pie",
+          "name": "Fish Pie",
+          "price": 45,
+          "desc": "Pastry filled with delicately seasoned fish."
+        },
+        {
+          "id": "chicken-pie",
+          "name": "Chicken Pie",
+          "price": 45,
+          "desc": "Buttery pastry stuffed with tender chicken filling."
+        },
+        {
+          "id": "sausage-rolls",
+          "name": "Sausage Rolls",
+          "price": 55,
+          "desc": "Classic sausage wrapped in flaky puff pastry.",
+          "tag": "Sells out fast"
+        }
+      ]
+    },
+    {
+      "id": "sandwiches",
+      "name": "Sandwiches",
+      "note": "Made to order on fresh bread.",
+      "items": [
+        {
+          "id": "chicken-avocado-sandwich",
+          "name": "Chicken Avocado",
+          "price": 95,
+          "desc": "Grilled chicken paired with fresh avocado and crisp salad."
+        },
+        {
+          "id": "bacon-egg-sandwich",
+          "name": "Bacon & Egg",
+          "price": 115,
+          "desc": "Classic bacon and egg combination."
+        },
+        {
+          "id": "chicken-club",
+          "name": "Chicken Club",
+          "price": 120,
+          "desc": "Layered chicken sandwich with bacon, egg and fresh salad."
+        },
+        {
+          "id": "tuna-sweetcorn",
+          "name": "Tuna & Sweetcorn",
+          "price": 98,
+          "desc": "Tuna mixed with a creamy, zesty dressing."
+        }
+      ]
+    },
+    {
+      "id": "wraps",
+      "name": "Wraps",
+      "note": "Warm wraps and paninis, packed with filling.",
+      "items": [
+        {
+          "id": "bacon-egg-wrap",
+          "name": "Bacon & Egg",
+          "price": 120,
+          "desc": "Classic bacon and egg wrapped up."
+        },
+        {
+          "id": "tuna-wrap",
+          "name": "Tuna Wrap",
+          "price": 105,
+          "desc": "Tuna, crisp salad and a creamy, zesty dressing in a warm wrap."
+        },
+        {
+          "id": "grilled-chicken-wrap",
+          "name": "Grilled Chicken",
+          "price": 110,
+          "desc": "Tender grilled chicken served in a warm wrap or panini."
+        },
+        {
+          "id": "peppered-steak-wrap",
+          "name": "Peppered Steak",
+          "price": 135,
+          "desc": "Juicy steak strips with sautéed peppers."
+        }
+      ]
+    },
+    {
+      "id": "salads",
+      "name": "Salads",
+      "note": "Crisp, fresh and generously built.",
+      "items": [
+        {
+          "id": "chicken-parmesan-salad",
+          "name": "Chicken Parmesan Salad",
+          "price": 150,
+          "desc": "Grilled chicken, parmesan cheese, cucumber, tomatoes, onions, lettuce and carrots."
+        },
+        {
+          "id": "chicken-avocado-salad",
+          "name": "Chicken Avocado Salad",
+          "price": 135,
+          "desc": "Grilled chicken, avocado, lettuce, tomatoes, onions, cucumber, carrots and boiled egg.",
+          "tag": "Guest favourite"
+        },
+        {
+          "id": "marinated-shrimp-salad",
+          "name": "Marinated Shrimp Salad",
+          "price": 165,
+          "desc": "Seasoned grilled shrimp served with fresh garden vegetables."
+        },
+        {
+          "id": "tuna-salad",
+          "name": "Tuna Salad",
+          "price": 125,
+          "desc": "Tuna chunks mixed with tomatoes, onions, cucumber, lettuce and dill."
+        },
+        {
+          "id": "garden-salad",
+          "name": "Garden Salad",
+          "price": 85,
+          "desc": "Fresh lettuce, tomatoes, onions, cucumber and carrots, with a choice of honey mustard or balsamic vinaigrette."
+        }
+      ]
+    },
+    {
+      "id": "wings",
+      "name": "Finger Licking Chicken Wings",
+      "note": "Portion of 6 — pick your glaze.",
+      "items": [
+        {
+          "id": "cheesy-parmesan-wings",
+          "name": "Cheesy Parmesan Wings",
+          "price": 180,
+          "desc": "Crispy wings coated in rich parmesan cheese.",
+          "tag": "Guest favourite"
+        },
+        {
+          "id": "ghanaian-green-chilli-wings",
+          "name": "Ghanaian Green Chilli Wings",
+          "price": 110,
+          "desc": "Wings tossed in a vibrant green chilli sauce."
+        },
+        {
+          "id": "bbq-wings",
+          "name": "BBQ Wings",
+          "price": 120,
+          "desc": "Smoky barbecue-glazed wings."
+        },
+        {
+          "id": "plain-wings",
+          "name": "Plain Wings",
+          "price": 100,
+          "desc": "Simply seasoned crispy chicken wings."
+        }
+      ]
+    },
+    {
+      "id": "mains",
+      "name": "Mains",
+      "note": "Comfort food, cooked to order.",
+      "items": [
+        {
+          "id": "spicy-chicken-wings",
+          "name": "Spicy Chicken Wings",
+          "price": 155,
+          "desc": "Spicy wings garnished with green and red peppers and onions."
+        },
+        {
+          "id": "lamb-chops",
+          "name": "Lamb Chops",
+          "price": 220,
+          "desc": "Imported lamb chops marinated in aromatic herbs and grilled to perfection.",
+          "tag": "Guest favourite"
+        },
+        {
+          "id": "pork-chops",
+          "name": "Pork Chops",
+          "price": 195,
+          "desc": "Juicy pork chops seasoned with herbs and spices, grilled to perfection."
+        },
+        {
+          "id": "peppered-chicken",
+          "name": "Peppered Chicken",
+          "price": 180,
+          "desc": "Chicken sautéed in scotch bonnet, ginger, onion, garlic and a rich tomato gravy."
+        },
+        {
+          "id": "peppered-oxtail",
+          "name": "Peppered Oxtail",
+          "price": 250,
+          "desc": "Slow-cooked oxtail in a fragrant pepper sauce with thyme and traditional spices."
+        },
+        {
+          "id": "spicy-beef-spaghetti",
+          "name": "Spicy Beef Spaghetti",
+          "price": 175,
+          "desc": "Spaghetti tossed in a rich spicy sauce with beef, onions, peppers and carrots."
+        },
+        {
+          "id": "baked-salmon",
+          "name": "Baked Salmon",
+          "price": 205,
+          "desc": "Perfectly baked salmon, served tender and flavourful."
+        },
+        {
+          "id": "seafood-jollof",
+          "name": "Seafood Jollof",
+          "price": 295,
+          "desc": "Aromatic jollof rice cooked with mixed seafood.",
+          "tag": "Guest favourite"
+        },
+        {
+          "id": "seafood-fried-rice",
+          "name": "Seafood Fried Rice",
+          "price": 280,
+          "desc": "Aromatic fried rice cooked with mixed seafood."
+        },
+        {
+          "id": "beef-chicken-jollof",
+          "name": "Beef & Chicken Jollof",
+          "price": 220,
+          "desc": "Richly seasoned jollof rice served with your choice of beef or chicken."
+        },
+        {
+          "id": "beef-chicken-fried-rice",
+          "name": "Beef & Chicken Fried Rice",
+          "price": 195,
+          "desc": "Seasoned fried rice served with your choice of beef or chicken."
+        }
+      ]
+    },
+    {
+      "id": "sides",
+      "name": "Sides",
+      "note": "The supporting cast.",
+      "items": [
+        { "id": "jollof-rice", "name": "Jollof Rice", "price": 70, "desc": "" },
+        { "id": "fried-rice", "name": "Fried Rice", "price": 65, "desc": "" },
+        { "id": "garlic-rice", "name": "Garlic Rice", "price": 55, "desc": "" },
+        { "id": "curry-rice", "name": "Curry Rice", "price": 55, "desc": "" },
+        { "id": "waakye", "name": "Waakye", "price": 80, "desc": "" },
+        { "id": "kelewele", "name": "Kelewele", "price": 50, "desc": "" },
+        { "id": "mashed-potato", "name": "Mashed Potato", "price": 85, "desc": "" },
+        { "id": "sweet-potato-fries", "name": "Sweet Potato Fries", "price": 65, "desc": "" },
+        { "id": "yam-chips", "name": "Yam Chips", "price": 60, "desc": "" },
+        { "id": "regular-fries", "name": "Regular Fries", "price": 60, "desc": "" },
+        { "id": "calamari", "name": "Calamari", "price": 140, "desc": "" }
+      ]
+    }
+  ]
+}
