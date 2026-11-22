@@ -1103,13 +1103,13 @@ em { font-style: italic; }
   justify-content: space-between;
   gap: 10px 24px;
   padding: 20px 0;
-  font-size: 0.57rem;
+  font-size: 0.61rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(251, 247, 240, 0.38);
+  color: rgba(251, 247, 240, 0.6);
 }
-.footer__bottom a { color: rgba(251, 247, 240, 0.55); }
+.footer__bottom a { color: rgba(251, 247, 240, 0.78); }
 .footer__bottom a:hover { color: var(--aqua); }
 .footer__watermark {
   margin: 10px 0 -0.1em;
