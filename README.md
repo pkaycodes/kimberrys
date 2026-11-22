@@ -56,6 +56,21 @@ Menu source files:
 - `_source/og-cover.html` / `_source/og-menu.html` — social preview templates (rendered at 1200 × 630)
 - `_source/build_menu.py` is intentionally excluded from the public site by `.htaccess` and `robots.txt`.
 
+## Brand assets
+
+All brand files live in `assets/brand/` and are part of the repository:
+
+- `logo-lockup-white.png` — white stacked logo, for dark backgrounds and GitHub
+- `logo-lockup-ink.png` — navy stacked logo, for light backgrounds
+- `logo-lockup-cream.png` — cream stacked logo, for photography
+- `github-social.png` — 1280 × 640 GitHub repository social preview
+- `github-avatar.png` — 640 × 640 square avatar
+- `og-cover.jpg` / `og-menu.jpg` — 1200 × 630 link previews
+- `favicon-*.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` — site icons
+- `menu-qr.png` / `menu-qr.svg` — QR code for `kimberrys.com/menu`
+
+On GitHub, upload `github-social.png` under **Settings → Social preview**, and use `github-avatar.png` as the account or organisation avatar.
+
 ## Deploy with GitHub and Hostinger
 
 1. Create a GitHub repository and push the **contents of this folder** so `index.html` sits at the repository root.

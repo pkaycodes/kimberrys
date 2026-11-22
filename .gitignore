@@ -6,7 +6,7 @@ maps.html
 page-*.png
 raw-*.jpeg
 source-photos/
-brand/
+/brand/
 qa/
 qa.js
 
