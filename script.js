@@ -35,6 +35,33 @@
     toastTimer = window.setTimeout(() => toastEl.classList.remove("is-visible"), 2800);
   };
 
+  /* ---------- Cookie notice ---------- */
+  const cookieBanner = $("[data-cookie-banner]");
+  const COOKIE_KEY = "kimberrys-cookie-notice-v1";
+  const sizeCookieBanner = () => {
+    if (!cookieBanner || cookieBanner.hidden) return;
+    document.documentElement.style.setProperty("--cookie-offset", `${cookieBanner.offsetHeight}px`);
+  };
+  if (cookieBanner) {
+    let seen = false;
+    try { seen = window.localStorage.getItem(COOKIE_KEY) === "seen"; } catch (error) { seen = false; }
+    if (!seen) {
+      cookieBanner.hidden = false;
+      document.body.classList.add("has-cookie-banner");
+      sizeCookieBanner();
+      window.addEventListener("resize", sizeCookieBanner, { passive: true });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeCookieBanner);
+    }
+    $$("[data-cookie-accept]").forEach((button) => {
+      button.addEventListener("click", () => {
+        try { window.localStorage.setItem(COOKIE_KEY, "seen"); } catch (error) { /* storage may be blocked */ }
+        cookieBanner.hidden = true;
+        document.body.classList.remove("has-cookie-banner");
+        document.documentElement.style.removeProperty("--cookie-offset");
+      });
+    });
+  }
+
   /* ---------- Sticky header ---------- */
   const header = $("[data-header]");
   const menuTools = $("[data-menu-tools]");
@@ -184,10 +211,9 @@
   /* ---------- Reveal on scroll ---------- */
   if (!reducedMotion && "IntersectionObserver" in window) {
     const targets = $$(
-      ".intro__heading, .intro__copy, .story-strip__main, .story-strip__small, .section-head, " +
-      ".fave-card, .menu-preview__intro, .menu-preview__list, " +
+      ".section-head, .fave-card, .menu-preview__intro, .menu-preview__list, " +
       ".gallery__item, .visit__copy, .visit__media, .cta-band__inner, .menu-section__head, " +
-      ".bakery-callout, .share-strip"
+      ".cake-panel, .cake-addons, .cake-preorder, .bakery-callout, .share-strip"
     );
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -250,6 +276,8 @@
   const resultCount = $("[data-result-count]");
   const emptyState = $("[data-menu-empty]");
   const dishes = $$(".dish");
+  const staticSections = $$("[data-menu-static]");
+  const dishSections = menuSections.filter((section) => !section.hasAttribute("data-menu-static"));
   const bakery = $("#bakery");
   if (resultCount) resultCount.setAttribute("aria-live", "polite");
 
@@ -258,6 +286,7 @@
     const query = searchInput.value.trim().toLowerCase();
     const tokens = query ? query.split(/\s+/).filter(Boolean) : [];
     let visible = 0;
+    let visibleStatic = 0;
 
     dishes.forEach((dish) => {
       const section = dish.closest("[data-menu-section]");
@@ -270,15 +299,25 @@
       if (match) visible += 1;
     });
 
-    menuSections.forEach((section) => {
+    dishSections.forEach((section) => {
       section.hidden = !section.querySelector(".dish:not([hidden])");
+    });
+
+    staticSections.forEach((section) => {
+      const haystack = `${section.dataset.keywords || ""} ${section.textContent || ""}`.toLowerCase();
+      const match = !tokens.length || tokens.every((token) => haystack.includes(token));
+      section.hidden = !match;
+      if (match && tokens.length) visibleStatic += 1;
     });
 
     if (resultCount) {
       resultCount.hidden = !query;
-      resultCount.textContent = `${visible} ${visible === 1 ? "dish" : "dishes"}`;
+      const parts = [];
+      if (visible) parts.push(`${visible} ${visible === 1 ? "dish" : "dishes"}`);
+      if (visibleStatic) parts.push(visibleStatic === 1 ? "cake menu" : "cake menus");
+      resultCount.textContent = parts.join(" · ") || "0 dishes";
     }
-    if (emptyState) emptyState.hidden = visible !== 0;
+    if (emptyState) emptyState.hidden = !query || visible !== 0 || visibleStatic !== 0;
     if (clearSearch) clearSearch.hidden = !query;
     if (bakery) bakery.hidden = Boolean(query);
     updateActiveTab();
@@ -310,6 +349,8 @@
   const orderTray = $("[data-order-tray]");
   const orderName = $("[data-order-name]");
   const orderNotes = $("[data-order-notes]");
+  const orderError = $("[data-order-error]");
+  const orderWebsite = $("[data-order-website]");
   const orderSend = $("[data-order-send]");
   const STORAGE_KEY = "kimberrys-order-v1";
 
@@ -379,6 +420,30 @@
     if (order.notes.trim()) lines.push(`Notes: ${order.notes.trim()}`);
     lines.push("", "Sent from kimberrys.com/menu");
     return lines.join("\n");
+  };
+
+  const showOrderError = (message) => {
+    if (!orderError) return;
+    orderError.textContent = message;
+    orderError.hidden = false;
+    if (orderName) orderName.setAttribute("aria-invalid", "true");
+  };
+
+  const clearOrderError = () => {
+    if (orderError) orderError.hidden = true;
+    if (orderName) orderName.removeAttribute("aria-invalid");
+  };
+
+  const validateOrder = () => {
+    if (orderWebsite && orderWebsite.value.trim()) return false;
+    const name = orderName ? orderName.value.trim() : "";
+    if (orderName && name.length < 2) {
+      showOrderError("Please add your name so we know who the order is for.");
+      orderName.focus();
+      return false;
+    }
+    clearOrderError();
+    return true;
   };
 
   const renderOrder = () => {
@@ -475,6 +540,7 @@
     if (!orderDialog) return;
     if (orderName) orderName.value = order.name;
     if (orderNotes) orderNotes.value = order.notes;
+    clearOrderError();
     renderOrder();
     orderDialog.showModal();
     syncScrollLock();
@@ -493,6 +559,7 @@
 
   orderName?.addEventListener("input", () => {
     order.name = orderName.value;
+    if (orderName.value.trim().length >= 2) clearOrderError();
     saveOrder();
     if (orderSend) orderSend.href = `${WHATSAPP}?text=${encodeURIComponent(buildMessage())}`;
   });
@@ -515,7 +582,9 @@
     if (orderTotals().count === 0) {
       event.preventDefault();
       toast("Add something from the menu first");
+      return;
     }
+    if (!validateOrder()) event.preventDefault();
   });
 
   order = loadOrder();

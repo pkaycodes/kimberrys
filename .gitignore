@@ -14,3 +14,11 @@ qa.js
 .DS_Store
 Thumbs.db
 *.log
+
+# Secrets and certificates must never enter the public site
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx

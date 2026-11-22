@@ -77,7 +77,7 @@ menu_schema = {
     "@context": "https://schema.org",
     "@type": "Menu",
     "name": "Kimberrys Food Menu",
-    "description": "Breakfast, pastries, sandwiches, wraps, salads, wings, mains and sides at Kimberrys Cafe & Bakery in Osu, Accra.",
+    "description": "Breakfast, pastries, sandwiches, wraps, salads, wings, mains, sides and celebration cakes at Kimberrys Cafe & Bakery in Osu, Accra.",
     "url": "https://kimberrys.com/menu",
     "inLanguage": "en-GH",
     "hasMenuSection": [
@@ -103,6 +103,11 @@ menu_schema = {
         for section in SECTIONS
     ],
 }
+menu_schema["hasMenuSection"].append({
+    "@type": "MenuSection",
+    "name": "Celebration cakes",
+    "description": "Kim cakes made with love: round and square celebration cakes in 6, 8, 10 and 12 inch sizes, with one to three layers. Add-ons and delivery priced separately. Preorder one to two days ahead.",
+})
 jsonld = json.dumps(menu_schema, ensure_ascii=False, indent=2)
 
 output = TEMPLATE.replace("        <!-- SECTIONS -->", sections_html).replace("  <!-- JSONLD -->", jsonld)
