@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-lockup-white.png">
+    <img src="assets/brand/logo-lockup-ink.png" alt="Kimberrys Cafe & Bakery" width="420">
+  </picture>
+</p>
+
 # Kimberrys Cafe & Bakery
 
 The website for **Kimberrys Cafe & Bakery** on Okodan Road in Osu, Accra.
