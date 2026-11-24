@@ -70,6 +70,94 @@
   const isMenu = document.body.dataset.page === "menu";
   let scrollQueued = false;
 
+  /* ---------- Menu hero context ----------
+     The menu is one page, but links to #cakes should land on a cake-focused
+     front cover. Everything else keeps the full food-menu hero. */
+  const menuHero = {
+    crumb: $("[data-menu-hero-crumb]"),
+    eyebrow: $("[data-menu-hero-eyebrow]"),
+    title: $("[data-menu-hero-title]"),
+    em: $("[data-menu-hero-em]"),
+    lede: $("[data-menu-hero-lede]"),
+    img: $("[data-menu-hero-img]"),
+    badge: $("[data-menu-hero-badge]"),
+    badgeLabel: $("[data-menu-hero-badge-label]"),
+    caption: $("[data-menu-hero-caption]")
+  };
+  const readMenuHeroImage = () => menuHero.img ? {
+    src: menuHero.img.getAttribute("src"),
+    srcset: menuHero.img.getAttribute("srcset"),
+    sizes: menuHero.img.getAttribute("sizes"),
+    alt: menuHero.img.getAttribute("alt"),
+    width: menuHero.img.getAttribute("width"),
+    height: menuHero.img.getAttribute("height")
+  } : null;
+  const defaultMenuHero = {
+    crumb: menuHero.crumb?.textContent,
+    eyebrow: menuHero.eyebrow?.textContent,
+    title: menuHero.title?.textContent,
+    em: menuHero.em?.textContent,
+    lede: menuHero.lede?.textContent,
+    img: readMenuHeroImage(),
+    badge: menuHero.badge?.textContent,
+    badgeLabel: menuHero.badgeLabel?.textContent,
+    caption: menuHero.caption?.textContent
+  };
+  const cakeMenuHero = {
+    crumb: "Celebration cakes",
+    eyebrow: "Celebration cakes · Osu, Accra",
+    title: "Our cake",
+    em: "selection.",
+    lede: "Round or square, one to three layers, finished with the touches you choose — made to order for your moment.",
+    img: {
+      src: "assets/img/pastry-case-wide.webp",
+      srcset: "assets/img/pastry-case-wide-480.webp 480w, assets/img/pastry-case-wide-640.webp 640w, assets/img/pastry-case-wide-800.webp 800w, assets/img/pastry-case-wide.webp 1200w",
+      sizes: "(max-width: 1020px) calc(100vw - 40px), 560px",
+      alt: "Cakes and pastries in the Kimberrys display case",
+      width: "1200",
+      height: "800"
+    },
+    badge: "4",
+    badgeLabel: "cake sizes",
+    caption: "Round or square · made to order"
+  };
+  const applyMenuHero = (data) => {
+    if (!data) return;
+    if (menuHero.crumb) menuHero.crumb.textContent = data.crumb;
+    if (menuHero.eyebrow) menuHero.eyebrow.textContent = data.eyebrow;
+    if (menuHero.title) menuHero.title.textContent = data.title;
+    if (menuHero.em) menuHero.em.textContent = data.em;
+    if (menuHero.lede) menuHero.lede.textContent = data.lede;
+    if (menuHero.badge) menuHero.badge.textContent = data.badge;
+    if (menuHero.badgeLabel) menuHero.badgeLabel.textContent = data.badgeLabel;
+    if (menuHero.caption) menuHero.caption.textContent = data.caption;
+    if (menuHero.img && data.img) {
+      ["src", "srcset", "sizes", "alt", "width", "height"].forEach((attribute) => {
+        if (data.img[attribute] == null) menuHero.img.removeAttribute(attribute);
+        else menuHero.img.setAttribute(attribute, data.img[attribute]);
+      });
+    }
+  };
+  const syncMenuHero = () => applyMenuHero(location.hash === "#cakes" ? cakeMenuHero : defaultMenuHero);
+  const revealTab = (id) => {
+    const strip = $(".menu-tabs");
+    const tab = tabs.find((item) => item.getAttribute("href") === `#${id}`);
+    if (!strip || !tab) return;
+    const left = tab.offsetLeft - (strip.clientWidth - tab.offsetWidth) / 2;
+    strip.scrollTo({ left: Math.max(0, left), behavior: reducedMotion ? "auto" : "smooth" });
+  };
+  const syncMenuTab = () => {
+    if (location.hash) revealTab(location.hash.slice(1));
+  };
+  if (isMenu) {
+    syncMenuHero();
+    syncMenuTab();
+    window.addEventListener("hashchange", () => {
+      syncMenuHero();
+      syncMenuTab();
+    });
+  }
+
   const updateActiveTab = () => {
     if (!tabs.length) return;
     const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 78;

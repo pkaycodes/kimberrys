@@ -55,7 +55,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 90px);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -113,6 +112,12 @@ em { font-style: italic; }
 }
 
 .section { padding: clamp(78px, 9.5vw, 132px) 0; }
+
+/* Keep in-page targets clear of the sticky header. Menu sections add the
+   height of their sticky category bar in their own rule below. */
+#main { scroll-margin-top: calc(var(--header-h) + 18px); }
+body.page-home #gallery,
+body.page-home #visit { scroll-margin-top: calc(var(--header-h) + 18px); }
 
 .visually-hidden {
   position: absolute !important;
@@ -1441,6 +1446,31 @@ em { font-style: italic; }
 
 /* Celebration cakes */
 .menu-section--cakes { padding-bottom: clamp(28px, 4vw, 40px); }
+.cake-banner {
+  position: relative;
+  margin: 0 0 clamp(20px, 3vw, 30px);
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--aqua);
+}
+.cake-banner img {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+}
+.cake-banner figcaption {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 .cake-menu { margin-top: clamp(24px, 3.6vw, 38px); }
 .cake-panels {
   display: grid;
@@ -2043,6 +2073,8 @@ em { font-style: italic; }
   .fave-card__body p { max-width: 34ch; }
 
   .cake-panel { padding: 18px 15px; border-radius: 16px; }
+  .cake-banner img { aspect-ratio: 4 / 3; }
+  .cake-banner figcaption { left: 12px; bottom: 12px; font-size: 0.49rem; }
   .cake-panel__head { align-items: flex-start; flex-direction: column; gap: 8px; }
   .cake-panel__badge { align-self: flex-start; }
   .cake-table thead th { font-size: 0.46rem; letter-spacing: 0.05em; }
