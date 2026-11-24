@@ -149,12 +149,27 @@
   const syncMenuTab = () => {
     if (location.hash) revealTab(location.hash.slice(1));
   };
+  /* The hero changes height between the food and cake versions. After it
+     updates, re-align the requested section so the category you tapped is
+     never left partly under the sticky header and tab bar. */
+  const alignMenuSection = (instant) => {
+    const target = location.hash ? document.getElementById(location.hash.slice(1)) : null;
+    if (!target || !target.hasAttribute("data-menu-section")) return;
+    const behavior = instant || reducedMotion ? "auto" : "smooth";
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior, block: "start" });
+      });
+    });
+  };
   if (isMenu) {
     syncMenuHero();
     syncMenuTab();
+    alignMenuSection(true);
     window.addEventListener("hashchange", () => {
       syncMenuHero();
       syncMenuTab();
+      alignMenuSection(false);
     });
   }
 
